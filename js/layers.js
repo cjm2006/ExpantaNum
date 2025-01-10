@@ -979,9 +979,9 @@ milestones:{
 		unlocked(){return hasUpgrade('b',46)},
 	},
 	24:{
-		requirementDescription:"1e561 膨胀点^2",
+		requirementDescription:"1e559 膨胀点^2",
 		effectDescription(){return "η获取随未知数量增加，目前:"+format((new ExpantaNum(player.points)).pow(0.0025),2)+"倍"},
-		done(){return player.b.points.gte('1e561')},
+		done(){return player.b.points.gte('1e559')},
 		unlocked(){return hasMilestone('b',23)},
 	},
 	25:{
@@ -993,7 +993,7 @@ milestones:{
 	26:{
 		requirementDescription:"1e670 膨胀点^2",
 		effectDescription(){return "解锁新层级"},
-		done(){return player.b.points.gte('1e652')},
+		done(){return player.b.points.gte('1e670')},
 		unlocked(){return hasMilestone('b',25)},
 	},
 },
@@ -1266,7 +1266,7 @@ addLayer("c",{
 		}
 	},
 	layerShown(){
-		if (hasMilestone('b',26) || player.c.points.gte(1))
+		if (hasMilestone('b',26) || player.c.total.gte(1))
 		return true
 	},
 	update(diff){
