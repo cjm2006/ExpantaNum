@@ -1437,7 +1437,14 @@ tabFormat:{
 	},
 	里程碑:{
 		buttonStyle(){return {'color':'#95d400'}},
-		content:["main-display","prestige-button","resource-display","milestones"],
+		content:[
+			"main-display","prestige-button","resource-display",
+			["display-text",
+			        function(){
+						return "<h3>您总共获取了"+"<span style='color:#ee55ea"+";font-size:25px;'>"+format(player.c.total)+"</span>"+"膨胀点^3"
+					},
+					],
+		"milestones"],
 	},
 	答案:{
 		unlocked(){return hasUpgrade('c',11)},
