@@ -35,6 +35,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',3)) mult = mult.mul(1e40)
 		if (hasMilestone('b',23)) mult = mult.mul(player.b.eta.add(1).pow(0.65))
 		if (getBuyableAmount('c',11).gte(1)) mult = mult.mul(new ExpantaNum(1e7).pow(getBuyableAmount('c',11)))
+		if (hasUpgrade('c',24)) mult=mult.mul(new ExpantaNum(5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
         return mult
     },
 	passiveGeneration(){
@@ -52,6 +53,9 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
         return exp
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)  QwQ:1也可以当第一排
+	hotkeys:[
+		{key: "a", description: "a: 进行层级1重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+	],
     layerShown(){return true},
 	doReset(resettingLayer){
 	    let keep = [];
@@ -104,6 +108,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',13)) gain1 = gain1.mul(player.b.points.add(1).pow(3.5))
 		if (hasMilestone('b',16)) gain1 = gain1.mul(player.b.zeta.add(1).pow(1.5))
 		if (getBuyableAmount('c',12).gte(1)) gain1 = gain1.mul(new ExpantaNum(1e5).pow(getBuyableAmount('c',12)))
+		if (hasUpgrade('c',23)) gain1 = gain1.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
 		if (hasUpgrade('a',24)) player.a.alpha = player.a.alpha.add(gain1.mul(diff))
 		if (hasUpgrade('a',24)) player.a.alphas = gain1
 		var gain2 = player.a.alpha.pow(0.3)
@@ -125,6 +130,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',13)) gain2 = gain2.mul(player.b.points.add(1).pow(3.5))
 		if (hasMilestone('b',16)) gain2 = gain2.mul(player.b.zeta.add(1).pow(1.5))
 		if (getBuyableAmount('c',12).gte(1)) gain2 = gain2.mul(new ExpantaNum(1e5).pow(getBuyableAmount('c',12)))
+		if (hasUpgrade('c',23)) gain2 = gain2.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
 		if (hasUpgrade('a',32) && player.a.getbeta) player.a.beta = player.a.beta.add(gain2.mul(diff))
 		if (hasUpgrade('a',32) && player.a.getbeta) player.a.betas = gain2
 		var gain3 = player.a.alpha.pow(0.02)
@@ -147,6 +153,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',13)) gain3 = gain3.mul(player.b.points.add(1).pow(3.5))
 		if (hasMilestone('b',16)) gain3 = gain3.mul(player.b.zeta.add(1).pow(1.5))
 		if (getBuyableAmount('c',12).gte(1)) gain3 = gain3.mul(new ExpantaNum(1e5).pow(getBuyableAmount('c',12)))
+		if (hasUpgrade('c',23)) gain3 = gain3.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
 		if (hasUpgrade('a',45) && player.a.getgamma) player.a.gamma = player.a.gamma.add(gain3.mul(diff))
 		if (hasUpgrade('a',45) && player.a.getgamma) player.a.gammas = gain3
 		var gain4 = player.a.alpha.pow(0.005)
@@ -166,6 +173,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',13)) gain4 = gain4.mul(player.b.points.add(1).pow(3.5))
 		if (hasMilestone('b',16)) gain4 = gain4.mul(player.b.zeta.add(1).pow(1.5))
 		if (getBuyableAmount('c',12).gte(1)) gain4 = gain4.mul(new ExpantaNum(1e5).pow(getBuyableAmount('c',12)))
+		if (hasUpgrade('c',23)) gain4 = gain4.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
 		if (hasUpgrade('a',63) && player.a.getdelta) player.a.delta = player.a.delta.add(gain4.mul(diff))
 		if (hasUpgrade('a',63) && player.a.getdelta) player.a.deltas = gain4
 		var gain5 = player.a.alpha.pow(0.0005)
@@ -180,6 +188,7 @@ addLayer("a", { //这是代码中的节点代码 例如player.p可以调用该�
 		if (hasMilestone('b',13)) gain5 = gain5.mul(player.b.points.add(1).pow(3.5))
 		if (hasMilestone('b',16)) gain5 = gain5.mul(player.b.zeta.add(1).pow(1.5))
 		if (getBuyableAmount('c',12).gte(1)) gain5 = gain5.mul(new ExpantaNum(1e5).pow(getBuyableAmount('c',12)))
+		if (hasUpgrade('c',23)) gain5 = gain5.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
 		if (hasUpgrade('a',84) && player.a.getepsilon) player.a.epsilon = player.a.epsilon.add(gain5.mul(diff))
 		if (hasUpgrade('a',84) && player.a.getepsilon) player.a.epsilons = gain5
 	},
@@ -550,13 +559,13 @@ upgrades:{
 		unlocked(){return hasUpgrade('a',83)},
 	},
 	85:{
-		title:"让我们狠狠装扮一下第四个孩子(1/2)",
+		title:"让我们狠狠装扮一下第五个孩子(1/2)",
 		description:"ε获取x1e3",
 		cost:new ExpantaNum('1e2873'),
 		unlocked(){return hasUpgrade('a',84)},
 	},
 	86:{
-		title:"让我们狠狠装扮一下第四个孩子(2/2)",
+		title:"让我们狠狠装扮一下第五个孩子(2/2)",
 		description:"ε获取x1e6",
 		cost:new ExpantaNum('1e2885'),
 		unlocked(){return hasUpgrade('a',85)},
@@ -756,6 +765,7 @@ addLayer("b",{
 		if (hasUpgrade('b',31)) mult = mult.mul(player.b.zeta.add(1).pow(0.05))
 		if (hasUpgrade('b',34)) mult = mult.pow(1.01)
 		if (hasUpgrade('c',12)) mult = mult.mul(player.c.points.add(1).pow(6))
+		if (hasMilestone('c',12)) mult = mult.mul(player.c.points.add(1).pow(10))
 		return mult
 	},
 	gainExp(){
@@ -763,6 +773,9 @@ addLayer("b",{
 		return exp
 	},
 	row:2,
+	hotkeys:[
+		{key: "b", description: "b: 进行层级2重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+	],
 	passiveGeneration(){
 		if (hasMilestone('b',15)){
 			return 1
@@ -1242,6 +1255,7 @@ addLayer("c",{
 		points:new ExpantaNum(0),
 		answer:new ExpantaNum(0),
 		answers:new ExpantaNum(0),
+		answertotal:new ExpantaNum(0),
 	}},
 	color:"#ee55ea",
 	resource:"膨胀点^3",
@@ -1253,6 +1267,9 @@ addLayer("c",{
 	gainMult(){
 		mult = new ExpantaNum(1)
 		if (hasUpgrade('c',13)) mult = mult.mul(3)
+		if (hasUpgrade('c',22)) mult = mult.mul(new ExpantaNum(1.01).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+		if (hasUpgrade('c',26)) mult = mult.pow(1.05)
+		if (hasMilestone('c',10)) mult = mult.mul(player.c.total.pow(0.125))
 		return mult
 	},
 	gainExp(){
@@ -1260,7 +1277,19 @@ addLayer("c",{
 		return exp
 	},
 	row:3,
+	hotkeys:[
+		{key: "c", description: "c: 进行层级3重置", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+	],
+	passiveGeneration(){
+		if (hasMilestone('c',8)){
+			return 0.1
+		}
+		return 0
+	},
 	effectDescription(){
+		if (hasMilestone('c',12)){
+			return "<h2>加成膨胀点^2获取"+"<span style='color:#1c91ff"+";font-size:25px;'>"+format(new ExpantaNum(player.c.points).add(1).pow(6).mul(new ExpantaNum(player.c.points).add(1).pow(10)),2)+"</span>"+"倍"
+		}
 		if (hasUpgrade('c',12)){
 			return "<h2>加成膨胀点^2获取"+"<span style='color:#1c91ff"+";font-size:25px;'>"+format(new ExpantaNum(player.c.points).add(1).pow(6),2)+"</span>"+"倍"
 		}
@@ -1276,7 +1305,12 @@ addLayer("c",{
 		if (hasMilestone('c',7)) gainA = gainA.mul(2.5)
 		if (hasUpgrade('c',14)) gainA = gainA.mul(2)
 		if (hasUpgrade('c',15)) gainA = gainA.mul(1.5)
+		if (hasUpgrade('c',21)) gainA = gainA.mul(new ExpantaNum(1.005).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+		if (hasUpgrade('c',25)) gainA = gainA.mul(player.c.answer.pow(0.125))
+		if (hasMilestone('c',9)) gainA = gainA.mul(player.c.answertotal.pow(0.025))
+		if (hasMilestone('c',11)) gainA = gainA.mul(player.c.total.pow(0.0625))
 		if (hasUpgrade('c',11)) player.c.answer = player.c.answer.add(gainA.mul(diff))
+		if (hasUpgrade('c',11)) player.c.answertotal = player.c.answertotal.add(gainA.mul(diff))
 		if (hasUpgrade('c',11)) player.c.answers = gainA
 	},
 milestones:{
@@ -1326,7 +1360,38 @@ milestones:{
 		effectDescription(){return "解锁新升级，答案获取x2.5"},
 		done(){return player.c.total.gte(40)},
 		unlocked(){return hasMilestone('c',6)},
-	}
+	},
+	8:{
+		requirementDescription:"总共 10000 膨胀点^3",
+		effectDescription(){return "每秒获得10%可获得膨胀点^3"},
+		done(){return player.c.total.gte(10000)},
+		unlocked(){return hasUpgrade('c',26)},
+	},
+	9:{
+		requirementDescription:"总共 20000 膨胀点^3",
+		effectDescription(){return "答案获取随答案获取总数量增加<br>目前:"+format(new ExpantaNum(player.c.answertotal).add(1).pow(0.025),2)+"倍"},
+		done(){return player.c.total.gte(20000)},
+		unlocked(){return hasMilestone('c',8)},
+	},
+	10:{
+		requirementDescription:"总共 42500 膨胀点^3",
+		effectDescription(){return "膨胀点^3获取随膨胀点^3获取总数量增加<br>目前:"+format(new ExpantaNum(player.c.total).add(1).pow(0.125),2)+"倍"},
+		done(){return player.c.total.gte(42500)},
+		unlocked(){return hasMilestone('c',8)},
+	},
+	11:{
+		requirementDescription:"总共 85000 膨胀点^3",
+		effectDescription(){return "答案获取随膨胀点^3获取总数量增加<br>目前:"+format(new ExpantaNum(player.c.total).add(1).pow(0.0625),2)+"倍"},
+		done(){return player.c.total.gte(85000)},
+		unlocked(){return hasMilestone('c',8)},
+	},
+	12:{
+		requirementDescription:"总共 200000 膨胀点^3",
+		effectDescription(){return "膨胀点^3加成膨胀点^2获取的公式更好"},
+		done(){return player.c.total.gte(200000)},
+		unlocked(){return hasMilestone('c',8)},
+	},
+	
 },
 upgrades:{
 	11:{
@@ -1350,21 +1415,87 @@ upgrades:{
 	14:{
 		title:"3UG14",
 		description:"答案获取x2",
-		cost:new ExpantaNum(125),
+		cost:new ExpantaNum(120),
 		unlocked(){return hasUpgrade('c',13)},
 	},
 	15:{
 		title:"3UG15",
 		description:"答案获取x1.5",
-		cost:new ExpantaNum(200),
+		cost:new ExpantaNum(185),
 		unlocked(){return hasUpgrade('c',14)},
 	},
 	16:{
 		title:"3UG16",
 		description:"解锁一个新可购买",
-		cost:new ExpantaNum(300),
+		cost:new ExpantaNum(240),
 		unlocked(){return hasUpgrade('c',15)},
-	}
+	},
+	21:{
+		title:"3UG21",
+		description:"每购买一个答案可购买增加答案获取x1.005",
+		cost:new ExpantaNum(325),
+		effect(){
+					var eff = new ExpantaNum(1)
+					eff = eff.mul(new ExpantaNum(1.005).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+					return eff
+		        },
+		effectDisplay(){return format(upgradeEffect(this.layer,this.id))+"倍"},
+		unlocked(){return hasUpgrade('c',16)},
+	},
+	22:{
+		title:"3UG22",
+		description:"每购买一个答案可购买增加膨胀点^3获取x1.01",
+		cost:new ExpantaNum(400),
+		effect(){
+					var eff = new ExpantaNum(1)
+					eff = eff.mul(new ExpantaNum(1.01).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+					return eff
+		        },
+		effectDisplay(){return format(upgradeEffect(this.layer,this.id))+"倍"},
+		unlocked(){return hasUpgrade('c',21)},
+	},
+	23:{
+		title:"3UG23",
+		description:"每购买一个答案可购买增加α~ε获取x1.5",
+		cost:new ExpantaNum(800),
+		effect(){
+					var eff = new ExpantaNum(1)
+					eff = eff.mul(new ExpantaNum(1.5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+					return eff
+		        },
+		effectDisplay(){return format(upgradeEffect(this.layer,this.id))+"倍"},
+		unlocked(){return hasUpgrade('c',22)},
+	},
+	24:{
+		title:"3UG24",
+		description:"每购买一个答案可购买增加膨胀点获取x5",
+		cost:new ExpantaNum(1200),
+		effect(){
+					var eff = new ExpantaNum(1)
+					eff = eff.mul(new ExpantaNum(5).pow(getBuyableAmount('c',11).add(getBuyableAmount('c',12)).add(getBuyableAmount('c',13)).add(getBuyableAmount('c',21))))
+					return eff
+		        },
+		effectDisplay(){return format(upgradeEffect(this.layer,this.id))+"倍"},
+		unlocked(){return hasUpgrade('c',23)},
+	},
+	25:{
+		title:"3UG25",
+		description:"答案获取随答案数量增加",
+		cost:new ExpantaNum(1500),
+		effect(){
+					var eff = new ExpantaNum(1)
+					eff = eff.mul(player.c.answer.pow(0.125))
+					return eff
+		        },
+		effectDisplay(){return format(upgradeEffect(this.layer,this.id))+"倍"},
+		unlocked(){return hasUpgrade('c',24)},
+	},
+	26:{
+		title:"3UG26",
+		description:"膨胀点^3获取^1.05，解锁新的里程碑",
+		cost:new ExpantaNum(2250),
+		unlocked(){return hasUpgrade('c',25)},
+	},
 },
 buyables:{
     11:{
@@ -1415,11 +1546,11 @@ buyables:{
 	},
 	21:{
 	cost(){return new ExpantaNum(1).mul(new ExpantaNum(1.1).pow(getBuyableAmount(this.layer,this.id)).pow(0.8)) },//x为购买的次数
-	display(){return "<h1>D</br><h2>未知获取每级x1e100</br><h1>当前效果："+format(new ExpantaNum(1e100).pow(getBuyableAmount(this.layer,this.id)))+"x</br>"+"<h2>花费："+format(new ExpantaNum(1).mul(new ExpantaNum(1.1).pow(getBuyableAmount(this.layer,this.id)).pow(0.8)))},
+	display(){return "<h1>D</br><h2>未知获取每级x1e150</br><h1>当前效果："+format(new ExpantaNum(1e150).pow(getBuyableAmount(this.layer,this.id)))+"x</br>"+"<h2>花费："+format(new ExpantaNum(1).mul(new ExpantaNum(1.1).pow(getBuyableAmount(this.layer,this.id)).pow(0.8)))},
 	canAfford(){return player.c.answer.gte(this.cost())},//所消耗的资源大于设定的花费
 	effect(){ 
 		var eff = new ExpantaNum(1)
-	    eff = eff.mul(new ExpantaNum(1e100).pow(this.cost(getBuyableAmount(this.layer,this.id))))
+	    eff = eff.mul(new ExpantaNum(1e150).pow(this.cost(getBuyableAmount(this.layer,this.id))))
 	    return eff
 	},
 	buy(){
@@ -1453,7 +1584,7 @@ tabFormat:{
 			["display-text",
 		                function(){
 							if (hasUpgrade('c',11))
-							return "<h2>您有"+"<span style='color:#00ffff"+";font-size:25px;'>"+format(player.c.answer)+"</span>"+"答案<br>"+"每秒获取:"+"<span style='color:#00ffff"+";font-size:25px;'>"+format(new ExpantaNum(player.c.answers))+"</span>"+"答案"+"<br>"
+							return "<h2>您有"+"<span style='color:#00ffff"+";font-size:25px;'>"+format(player.c.answer)+"</span>"+"答案<br>"+"每秒获取:"+"<span style='color:#00ffff"+";font-size:25px;'>"+format(new ExpantaNum(player.c.answers))+"</span>"+"答案"+"<br>您总共获取了"+"<span style='color:#00ffff"+";font-size:25px;'>"+format(new ExpantaNum(player.c.answertotal))+"</span>"+"答案"
 						},
 						],
 		"buyables"],

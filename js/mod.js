@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.3.1",
+	num: "0.3.1.2",
 	name: "“三”",
 }
 
@@ -28,7 +28,9 @@ let changelog = `<h1>更新记录:</h1><br>
 	<h3>v0.3.1</h3><br>
 	    - 更改层级3的里程碑获取方式.<br>
 	<h3>v0.3.1.1</h3><br>
-		- 添加了一点点小东西.<br>`
+		- 添加了一点点小东西.<br>
+	<h3>v0.3.1.2</h3><br>
+	    - 添加快捷键(抱歉现在才来，不要骂了不要骂了.jpg).<br>`
 
 let winText = `恭喜通关!您已经完成了这次更新的内容!当然,你继续玩下去也可以,接下来的更新会按照上版本的结尾数值来更新。至于更新嘛...咕咕咕?`
 
@@ -66,7 +68,7 @@ function getPointGen() {
 	if (hasMilestone('b',4)) gain = gain.mul(1e100)
 	if (hasMilestone('b',15)) gain = gain.pow(1.05)
 	if (hasMilestone('b',19)) gain = gain.pow(player.points.add(1).pow(1e-6))
-	if (getBuyableAmount('c',21).gte(1)) gain = gain.mul(new ExpantaNum(1e100).pow(getBuyableAmount('c',21)))
+	if (getBuyableAmount('c',21).gte(1)) gain = gain.mul(new ExpantaNum(1e150).pow(getBuyableAmount('c',21)))
 	gain = softcap(gain,new ExpantaNum('1e1300'),0.9)
 	gain = softcap(gain,new ExpantaNum('1e1800'),0.75)
 	gain = softcap(gain,new ExpantaNum('1e2900'),0.5)
@@ -91,7 +93,7 @@ var displayThings = [
 	    return "由于未知过多(1e1300),未知获取受到软上限阻碍,目前软上限效果:^0.9"
 	},
 	function(){
-		return "<h2>目前结局:获得层级3 3UG16升级并获得400膨胀点^3"
+		return "<h2>目前结局:获得层级3 3UG26升级并累计获得200000膨胀点^3"
 	},
 	function(){
 		return "<h3>如果到达结局时卡住了按一下'i'就能进入结局界面"
