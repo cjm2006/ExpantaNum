@@ -602,7 +602,7 @@ upgrades:{
 	93:{
 		title:"哥哥的帮助2",
 		description:"ε获取随α数量增加",
-		cost:new ExpantaNum('1e4070'),
+		cost:new ExpantaNum('1e4050'),
 		effect(){
 					var eff = new ExpantaNum(1)
 					eff = eff.mul(player.a.alpha.add(1).pow(0.015))
